@@ -6,6 +6,7 @@ let yoff = 0;
 
 let sliderZoom;
 let sliderWater;
+let sliderBeach;
 
 let imgGrass;
 let imgSand;
@@ -18,7 +19,8 @@ function preload(){
   tilesImages[4] = loadImage('./assets/grass-clara.png')
   tilesImages[2] = loadImage('./assets/grass-escura.png')
   tilesImages[1] = loadImage('./assets/areia.png')
-  tilesImages[0] = loadImage('./assets/mar.png')
+  tilesImages[0] = loadImage('./assets/dark-water.png')
+  tilesImages[5] = loadImage('./assets/water.png')
   tilesImages[3] = loadImage('./assets/dirt.png')
 }
 
@@ -49,9 +51,11 @@ function drawMap(){
 
 function getTile(x, y){
   let noiseValue = noise(x/zoomFactor, y/zoomFactor);
-  if (noiseValue < sliderWater.value()/10) {
+  if (noiseValue < sliderWater.value()/10+0.08) {
     return 0;
-  } else if (noiseValue < 0.4) {
+  }else if (noiseValue < sliderWater.value()/10 + 0.16) {
+    return 5;
+  }else if (noiseValue < sliderBeach.value()/10) {
     return 1;
   } else if (noiseValue< 0.6) {
     return 4;
@@ -67,6 +71,8 @@ function addSlider(){
   sliderZoom.position(width-width/10, 450);
   sliderWater = createSlider(0, 8, 2)
   sliderWater.position(width-width/10, 500)
+  sliderBeach = createSlider(0, 8, 4)
+  sliderBeach.position(width-width/10, 550)
 }
 
 function addBtn(){
