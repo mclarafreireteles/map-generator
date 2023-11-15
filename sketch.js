@@ -5,6 +5,7 @@ let xoff = 0;
 let yoff = 0;
 
 let sliderZoom;
+let sliderWater;
 
 let imgGrass;
 let imgSand;
@@ -22,15 +23,19 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth, 700);
+  createCanvas(windowWidth, windowHeight);
   addSlider();
   addBtn();
   noStroke();
 }
 
 function draw() {
+  fill('red');
+  textSize(100);
+  text("Olá, mundo!", width/2, 1000);
   background(220);
   drawMap();
+  rectMenu();
 }
 
 function drawMap(){
@@ -44,7 +49,7 @@ function drawMap(){
 
 function getTile(x, y){
   let noiseValue = noise(x/zoomFactor, y/zoomFactor);
-  if (noiseValue < 0.3) {
+  if (noiseValue < sliderWater.value()/10) {
     return 0;
   } else if (noiseValue < 0.4) {
     return 1;
@@ -59,16 +64,25 @@ function getTile(x, y){
 
 function addSlider(){
   sliderZoom = createSlider(5, 15, 10);
+  sliderZoom.position(width-width/10, 450);
+  sliderWater = createSlider(0, 8, 2)
+  sliderWater.position(width-width/10, 500)
 }
 
 function addBtn(){
   btnSeed = createButton('Tentar outro mapa!')
   btnSeed.mousePressed(generateSeed)
+  btnSeed.position(width-width/10, 600);
 }
 
 function generateSeed(){
   noiseSeed(millis());
   drawMap();
+}
+
+function rectMenu(){
+  fill('grey')
+  rect(width/2+width/3, 0, width/6, height)
 }
 
 
