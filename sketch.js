@@ -3,6 +3,8 @@ let zoomFactor = 10;
 
 let xoff = 0;
 let yoff = 0;
+let countLeft = 0;
+let countTop = 0;
 
 let speed = 1;
 
@@ -42,6 +44,31 @@ function draw() {
   rectMenu();
 }
 
+function keyPressed(){
+  if (key == 'w' && countTop > 0){
+   yoff -= speed;
+   countTop--;
+  }
+  if (key == 's'){
+   yoff += speed;
+   countTop++;
+  }
+  if (key == 'a' && countLeft > 0){
+   xoff -= speed;
+   countLeft--;
+  }
+  if (key == 'd'){
+   xoff += speed;
+   countLeft++;
+  }
+  if (key == 'w' && countTop == 0){
+    console.log('limite atingido')
+    textSize(100);
+    text('Limite atingido', width/2, height/2);;
+   }
+}
+
+
 function drawMap(){
   zoomFactor = sliderZoom.value();
   for(let x = 0;x < width/tileSize; x++){
@@ -68,20 +95,6 @@ function getTile(x, y){
   }
 }
 
-function keyPressed(){
-   if (key == 'w'){
-    yoff -= speed;
-   }
-   if (key == 'ws'){
-    yoff += speed;
-   }
-   if (key == 'a'){
-    xoff -= speed;
-   }
-   if (key == 'd'){
-    xoff += speed;
-   }
-}
 
 function addSlider(){
   sliderZoom = createSlider(5, 15, 10);
