@@ -4,6 +4,8 @@ let zoomFactor = 10;
 let xoff = 0;
 let yoff = 0;
 
+let speed = 1;
+
 let sliderZoom;
 let sliderWater;
 let sliderBeach;
@@ -50,7 +52,7 @@ function drawMap(){
 }
 
 function getTile(x, y){
-  let noiseValue = noise(x/zoomFactor, y/zoomFactor);
+  let noiseValue = noise(xoff + x/zoomFactor, yoff + y/zoomFactor);
   if (noiseValue < sliderWater.value()/10+0.08) {
     return 0;
   }else if (noiseValue < sliderWater.value()/10 + 0.16) {
@@ -64,7 +66,22 @@ function getTile(x, y){
   } else {
     return 3;
   }
-} 
+}
+
+function keyPressed(){
+   if (key == 'w'){
+    yoff -= speed;
+   }
+   if (key == 'ws'){
+    yoff += speed;
+   }
+   if (key == 'a'){
+    xoff -= speed;
+   }
+   if (key == 'd'){
+    xoff += speed;
+   }
+}
 
 function addSlider(){
   sliderZoom = createSlider(5, 15, 10);
