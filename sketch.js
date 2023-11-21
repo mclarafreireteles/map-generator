@@ -3,6 +3,8 @@
 let tileSize = 16;
 let zoomFactor = 10;
 
+let alphaText = 0;
+
 let xoff = 0;
 let yoff = 0;
 let countLeft = 0;
@@ -65,9 +67,7 @@ function keyPressed(){
    countLeft++;
   }
   if (key == 'w' && countTop == 0){
-    console.log('limite atingido')
-    textSize(100);
-    text('Limite atingido', width/2, height/2);;
+   // addLimitText();
    }
 }
 
@@ -97,5 +97,3 @@ function getTile(x, y){
     return 3;
   }
 }
-
-

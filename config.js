@@ -1,3 +1,5 @@
+
+
 function addSlider(){
     sliderZoom = createSlider(5, 15, 10);
     sliderZoom.position(width-width/10, 450);
@@ -38,3 +40,25 @@ function addSlider(){
     text('Praia:', width-width/10 - 80, width/2-width/4+100)
   }
   
+//   function addLimitText(){
+//     fill(0); // Cor preta
+//     textSize(32);
+//     textAlign(CENTER, CENTER);
+
+//   // Define a opacidade do texto
+//     fill(0, 0, 0, alphaText);
+  
+//   // Escreve o texto no centro da tela
+//     text("Texto que aparece e desaparece", width / 2, height / 2);
+
+//   // Aumenta ou diminui a opacidade gradualmente
+//   if (alphaText < 255) {
+//     alphaText += 1; // Aumenta a opacidade
+//   } else {
+//     // Quando atinge o máximo, espera um pouco e então diminui a opacidade
+//     if(frameCount % 60 === 0) { // Espera 1 segundo (60 frames a 60 FPS)
+//       alphaText = 0; // Reinicia a opacidade
+//     }
+//   }
+//   console.log('função rodando')
+// }
