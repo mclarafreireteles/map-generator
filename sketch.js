@@ -1,3 +1,5 @@
+// maria clara freire teles
+
 let tileSize = 16;
 let zoomFactor = 10;
 
@@ -42,6 +44,7 @@ function draw() {
   background(220);
   drawMap();
   rectMenu();
+  addText();
 }
 
 function keyPressed(){
@@ -121,8 +124,10 @@ function rectMenu(){
   rect(width/2+width/3, 0, width/6, height)
 }
 
-
-
-
-
-
+function addText(){
+  fill(255);
+  textSize(25);
+  text('Zoom:', width-width/10 - 80, width/2-width/4)
+  text('Água:', width-width/10 - 80, width/2-width/4+50)
+  text('Praia:', width-width/10 - 80, width/2-width/4+100)
+}
